@@ -72,7 +72,6 @@ export function Home() {
   function transformOnValiHour(value: string) {
     const formatedValue = value.replace(':', '');
     
-    console.log('formatedDate', formatedValue)
     return formatedValue;
   }
 
@@ -80,7 +79,6 @@ export function Home() {
     const hour = value.slice(0, 2);
     const minute = value.slice(2, 4);
     
-    console.log(hour + ':' + minute);
     return hour + ':' + minute;
   }
 
@@ -141,7 +139,6 @@ export function Home() {
 
   function orderTheMealsDates(storageMeals: Meal[]) {
     const formatedDate = storageMeals.map(meal => {
-      console.log(meal.hour)
       const formatedValidDate: Meal = {
         ...meal,
         hour: transformOnValiHour(meal.hour),
@@ -149,11 +146,7 @@ export function Home() {
       return formatedValidDate;
     })
 
-    // console.log(formatedDate)
-
     const orderedByMoreRecently = formatedDate.sort((a, b) => b.hour - a.hour)
-
-    console.log(orderedByMoreRecently)
 
     const transformedDateToPtbr = orderedByMoreRecently.map(meal => {
       const formatedWithNewDate: Meal = {
