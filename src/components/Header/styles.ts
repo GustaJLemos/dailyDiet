@@ -1,13 +1,23 @@
 import styled from "styled-components/native";
 
-export const Container = styled.View`
-  flex: 1;
+type ContainerStyleProps = {
+  backgroundColor: string;
+}
+
+export const Container = styled.View<ContainerStyleProps>`
+  width: 100%;
+  height: 140px;
+
+  background-color: ${({ backgroundColor }) => backgroundColor};
+
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ContentHeader = styled.View`
+  width: 100%;
+  
   flex-direction: row;
-
-  justify-content: space-between;
-
-  min-height: 48px;
-  max-height: 48px;
-
-  margin: 18px 0;
-`; 
+  
+  padding: 0 24px;
+`;

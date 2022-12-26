@@ -1,18 +1,42 @@
+import { GoBackIcon } from '@components/GoBackIcon';
+import { Typography } from '@components/Typography';
 import React from 'react';
-import { Image, View } from 'react-native';
-import { Container } from './styles';
-import LogoPng from '@assets/Logo.png'
-import UserProfilePng from '@assets/UserProfile.png'
+import { Image, StatusBar, View } from 'react-native';
+import { useTheme } from 'styled-components/native';
 
-export function Header() {
+import { Container, ContentHeader } from './styles';
+
+type Props = {
+  title: string;
+  backgroundColor: string;
+}
+
+export function Header({ title, backgroundColor }: Props) {
+  const { COLORS } = useTheme();
+
   return (
-    <Container>
-      <Image 
-        source={LogoPng}
+    <>
+      <StatusBar 
+        backgroundColor={backgroundColor}
+        barStyle='dark-content'
       />
-      <Image 
-        source={UserProfilePng}
-      />
-    </Container>
+
+      <Container
+        backgroundColor={backgroundColor}
+      >
+        <ContentHeader>
+          <GoBackIcon style={{ width: 24, height: 24 }} color={COLORS.base.gray200}/>             
+
+          <Typography 
+            fontColor='gray100' 
+            fontFamily='bold' 
+            fontSize='title_S'
+            style={{ textAlign: 'center', width: '90%' }}
+          >
+            {title}
+          </Typography>
+        </ContentHeader>
+      </Container>
+    </>
   );
 }

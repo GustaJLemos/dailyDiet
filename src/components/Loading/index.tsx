@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components';
 import { Container } from './styles';
 
 export function Loading() {
-  const { COLORS} = useTheme()
+  const { COLORS } = useTheme()
 
   return (
     <Container>
